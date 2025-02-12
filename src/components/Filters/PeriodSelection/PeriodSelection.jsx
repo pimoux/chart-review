@@ -95,9 +95,6 @@ export default function PeriodSelection({ currentDay, currentMonth, currentYear,
                     })}
                 </select>
             </div>
-            {/* {console.log(currentYear)}
-            {console.log(currentMonth)}
-            {console.log(currentDay)} */}
             <div className='period-year'>
                 <button type='button' onClick={() => editYear("plus")} disabled={currentYear === MAX_DATE.year}>Increase</button>
                 <p>Year {currentYear}</p>
