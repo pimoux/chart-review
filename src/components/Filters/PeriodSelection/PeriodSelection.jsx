@@ -46,9 +46,10 @@ export default function PeriodSelection({ currentDay, currentMonth, currentYear,
                     setCurrentMonth(lastMonth);
                     setCurrentDay(lastDay);
                 } else {
-                    const nbDays = range[currentYear][monthsLowercase[monthIndex - 1]].length;
-                    setCurrentMonth(monthsLowercase[monthIndex - 1]);
-                    setCurrentDay(range[currentYear][currentMonth][nbDays]);
+                    const prevMonth = monthsLowercase[monthIndex - 1];
+                    const nbDays = range[currentYear][prevMonth].length - 1;
+                    setCurrentMonth(prevMonth);
+                    setCurrentDay(range[currentYear][prevMonth][nbDays]);
                 }
             } else {
                 setCurrentDay(daysOfMonth[dayIndex - 1]);

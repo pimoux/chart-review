@@ -12,8 +12,8 @@ export default function EurUsdView() {
     const [isM15enabled, setIsM15enabled] = useState(true);
     const [isH1enabled, setIsH1enabled] = useState(true);
 
-    const [currentDay, setCurrentDay] = useState(2);
-    const [currentMonth, setCurrentMonth] = useState("septembre");
+    const [currentDay, setCurrentDay] = useState(7);
+    const [currentMonth, setCurrentMonth] = useState("novembre");
     const [currentYear, setCurrentYear] = useState(2024);
     const [range, setRange] = useState(null);
 
@@ -33,10 +33,10 @@ export default function EurUsdView() {
             {range !== null && <PeriodSelection currentDay={currentDay} currentMonth={currentMonth} currentYear={currentYear} range={range}
                 setCurrentDay={setCurrentDay} setCurrentMonth={setCurrentMonth} setCurrentYear={setCurrentYear} />}
         </div>
-        <ChartDisplay
+        {/* <ChartDisplay
             origin={"eurusd"}
             isM1enabled={isM1enabled} isM5enabled={isM5enabled} isM15enabled={isM15enabled} isH1enabled={isH1enabled}
             currentYear={currentYear} currentMonth={currentMonth} currentDay={currentDay}
-        />
+        /> */}
     </div>
 };
