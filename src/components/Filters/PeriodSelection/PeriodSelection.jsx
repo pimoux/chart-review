@@ -39,7 +39,7 @@ export default function PeriodSelection({ currentDay, currentMonth, currentYear,
                 if (monthIndex === 0) {
                     const prevYear = currentYear - 1;
                     const monthsPrevYear = Object.keys(range[prevYear]);
-                    const lastMonth = monthsPrevYear[monthsPrevYear.length -1];
+                    const lastMonth = monthsPrevYear[monthsPrevYear.length - 1];
                     const lastDayIndex = range[prevYear][lastMonth].length - 1;
                     const lastDay = range[prevYear][lastMonth][lastDayIndex];
                     setCurrentYear(prevYear);
@@ -79,27 +79,29 @@ export default function PeriodSelection({ currentDay, currentMonth, currentYear,
         return currentYear === MIN_DATE.year && currentMonth === MIN_DATE.month && currentDay === MIN_DATE.day;
     }
 
-    return <div className="period-selection">
-        <h2 className="period-selection-title">PERIOD SELECTION</h2>
-        <div className="period-selection-filters">
-            <div className='period-day'>
-                <button type='button' onClick={() => editDay("plus")} disabled={disabledAddDayButton()}>Increase</button>
-                <p>Day {currentDay}</p>
-                <button type='button' onClick={() => editDay("minus")} disabled={disabledSubtractDayButton()}>Decrease</button>
-            </div>
-            <div className="period-month">
-                <label htmlFor="period-month">Month</label>
-                <select name="period-month" id="period-month" value={currentMonth} onChange={(e) => editMonth(e.target.value)}>
-                    {months.map((month) => {
-                        return <option key={month.value} value={month.value} label={month.label} />
-                    })}
-                </select>
-            </div>
-            <div className='period-year'>
-                <button type='button' onClick={() => editYear("plus")} disabled={currentYear === MAX_DATE.year}>Increase</button>
-                <p>Year {currentYear}</p>
-                <button type='button' onClick={() => editYear("minus")} disabled={currentYear === MIN_DATE.year}>Decrease</button>
+    return (
+        <div className="period-selection">
+            <h2 className="period-selection-title">PERIOD SELECTION</h2>
+            <div className="period-selection-filters">
+                <div className='period-day'>
+                    <button type='button' onClick={() => editDay("plus")} disabled={disabledAddDayButton()}>Increase</button>
+                    <p>Day {currentDay}</p>
+                    <button type='button' onClick={() => editDay("minus")} disabled={disabledSubtractDayButton()}>Decrease</button>
+                </div>
+                <div className="period-month">
+                    <label htmlFor="period-month">Month</label>
+                    <select name="period-month" id="period-month" value={currentMonth} onChange={(e) => editMonth(e.target.value)}>
+                        {months.map((month) => {
+                            return <option key={month.value} value={month.value} label={month.label} />
+                        })}
+                    </select>
+                </div>
+                <div className='period-year'>
+                    <button type='button' onClick={() => editYear("plus")} disabled={currentYear === MAX_DATE.year}>Increase</button>
+                    <p>Year {currentYear}</p>
+                    <button type='button' onClick={() => editYear("minus")} disabled={currentYear === MIN_DATE.year}>Decrease</button>
+                </div>
             </div>
         </div>
-    </div>
+    );
 }

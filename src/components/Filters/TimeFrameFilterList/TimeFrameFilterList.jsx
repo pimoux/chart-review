@@ -25,12 +25,14 @@ export default function TimeFrameFilterList({ isM1enabled, isM5enabled, isM15ena
             label: "H1",
         },
     ]
-    return <div className="timeframe-filter">
-        <h2 className='timeframe-title'>TIMEFRAME FILTER</h2>
-        <div className="timeframe-checkboxes">
-            {properties.map((item, i) => {
-                return <TimeFrameFilterItem key={i} timeFrame={item.timeFrame} label={item.label} setTimeFrame={item.setTimeFrame} />
-            })}
+    return (
+        <div className="timeframe-filter">
+            <h2 className='timeframe-title'>TIMEFRAME FILTER</h2>
+            <div className="timeframe-checkboxes">
+                {properties.map((item, i) => {
+                    return <TimeFrameFilterItem key={i} timeFrame={item.timeFrame} label={item.label} setTimeFrame={item.setTimeFrame} />
+                })}
+            </div>
         </div>
-    </div>
+    );
 }

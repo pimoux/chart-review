@@ -21,12 +21,14 @@ export default function ChartDisplay({ isM1enabled, isM5enabled, isM15enabled, i
             attribute: isH1enabled,
         },
     ]
-    return <div className="chart-display">
-        <h2 className='chart-display-title'>CHART DISPLAY</h2>
-        <div className='charts'>
-            {timeframes.map((item, i) => {
-                return <Chart key={item.label} origin={origin} label={item.label} isDisplaying={item.attribute} currentYear={currentYear} currentMonth={currentMonth} currentDay={currentDay} />
-            })}
+    return (
+        <div className="chart-display">
+            <h2 className='chart-display-title'>CHART DISPLAY</h2>
+            <div className='charts'>
+                {timeframes.map((item, i) => {
+                    return <Chart key={item.label} origin={origin} label={item.label} isDisplaying={item.attribute} currentYear={currentYear} currentMonth={currentMonth} currentDay={currentDay} />
+                })}
+            </div>
         </div>
-    </div>
+    );
 }

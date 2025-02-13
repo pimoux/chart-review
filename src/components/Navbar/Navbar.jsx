@@ -15,11 +15,13 @@ export default function Navbar({ currentLabel }) {
         }
     ]
 
-    return <div className="navbar">
-        {links.map((item, i) => {
-            return <div className={currentLabel === item.label ? "navlink active" : "navlink"} key={i}>
-                <Link to={item.path}>{item.label}</Link>
-            </div>
-        })}
-    </div>
+    return (
+        <div className="navbar">
+            {links.map((item, i) => {
+                return <div className={currentLabel === item.label ? "navlink active" : "navlink"} key={i}>
+                    <Link to={item.path}>{item.label}</Link>
+                </div>
+            })}
+        </div>
+    );
 };

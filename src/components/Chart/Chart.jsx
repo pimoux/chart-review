@@ -5,7 +5,7 @@ export default function Chart({ label, isDisplaying, currentYear, currentMonth, 
 
     const getStyle = () => {
         //scale 0.5 for height and width
-        return isDisplaying ? { 
+        return isDisplaying ? {
             backgroundImage: `url('/images/${origin}/${currentYear}/${currentMonth}/${currentDay}/${label}.png')`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
@@ -19,8 +19,10 @@ export default function Chart({ label, isDisplaying, currentYear, currentMonth, 
         return defaultClass;
     }
 
-    return <div className="chart">
-        <p className={getTextClassName()}>{label}</p>
-        <div style={{...getStyle()}}></div>
-    </div>
+    return (
+        <div className="chart">
+            <p className={getTextClassName()}>{label}</p>
+            <div style={{ ...getStyle() }}></div>
+        </div>
+    );
 }
