@@ -1,0 +1,6 @@
+.indice-checkbox {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+    justify-content: center;
+}

@@ -3,7 +3,7 @@ import "./chart.css";
 
 export default function Chart({ label, isDisplaying, currentYear, currentMonth, currentDay, origin }) {
 
-    const getStyle = () => {
+    const getStyleEurUsd = () => {
         //scale 0.5 for height and width
         return isDisplaying ? {
             backgroundImage: `url('/images/${origin}/${currentYear}/${currentMonth}/${currentDay}/${label}.png')`,
@@ -19,10 +19,14 @@ export default function Chart({ label, isDisplaying, currentYear, currentMonth, 
         return defaultClass;
     }
 
-    return (
-        <div className="chart">
+    return origin === "eurusd" ? (
+        <div className="chart-euro">
             <p className={getTextClassName()}>{label}</p>
-            <div style={{ ...getStyle() }}></div>
+            <div style={{ ...getStyleEurUsd() }}></div>
         </div>
-    );
+    ) : (
+        <div className="chart-american-indices">
+            <p className={getTextClassName()}>{label}</p>
+        </div>
+    )
 }
