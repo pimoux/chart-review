@@ -20,6 +20,7 @@ export default function EurUsdView() {
 
     useEffect(() => {
         const rangeBuilt = buildPeriodRange();
+        console.log(rangeBuilt);
         setRange(rangeBuilt);
     }, []);
 

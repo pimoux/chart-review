@@ -1,7 +1,7 @@
 import React from 'react';
 import "./chart.css";
 
-export default function Chart({ label, isDisplaying, currentYear, currentMonth, currentDay, origin }) {
+export default function Chart({ label, isDisplaying, currentYear, currentMonth, currentDay, origin, isNQenabled, isESenabled }) {
 
     const getStyleEurUsd = () => {
         //scale 0.5 for height and width
@@ -19,6 +19,19 @@ export default function Chart({ label, isDisplaying, currentYear, currentMonth, 
         return defaultClass;
     }
 
+    const getStyleAmericanIndices = (isIndiceEnabled) => {
+        const isDisplaying = isIndiceEnabled === "NQ" ? isNQenabled : isESenabled;
+        const completedLabel = isIndiceEnabled === "NQ" ? `NQ${label}` : `ES${label}`;
+
+        return isDisplaying ? {
+            backgroundImage: `url('/images/${origin}/${currentYear}/${currentMonth}/${currentDay}/${completedLabel}.png')`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            width: "800px",
+            height: "370.1px",
+        } : { display: "none" }
+    }
+
     return origin === "eurusd" ? (
         <div className="chart-euro">
             <p className={getTextClassName()}>{label}</p>
@@ -27,6 +40,10 @@ export default function Chart({ label, isDisplaying, currentYear, currentMonth, 
     ) : (
         <div className="chart-american-indices">
             <p className={getTextClassName()}>{label}</p>
+            <div className="american-charts">
+                <div style={{ ...getStyleAmericanIndices("NQ") }}></div>
+                <div style={{ ...getStyleAmericanIndices("ES") }}></div>
+            </div>
         </div>
     )
 }

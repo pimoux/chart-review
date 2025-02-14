@@ -2,7 +2,7 @@ import React from 'react';
 import "./chartDisplay.css";
 import Chart from '../Chart/Chart';
 
-export default function ChartDisplay({ isM1enabled, isM5enabled, isM15enabled, isH1enabled, currentYear, currentMonth, currentDay, origin }) {
+export default function ChartDisplay({ isM1enabled, isM5enabled, isM15enabled, isH1enabled, isNQenabled, isESenabled, currentYear, currentMonth, currentDay, origin }) {
     const timeframes = [
         {
             label: "M1",
@@ -24,9 +24,20 @@ export default function ChartDisplay({ isM1enabled, isM5enabled, isM15enabled, i
     return (
         <div className="chart-display">
             <h2 className='chart-display-title'>CHART DISPLAY</h2>
+            {origin === "americanIndices" &&
+                <div className='chart-display-american-indices-title'>
+                    <h2>NASDAQ 100</h2>
+                    <h2>S&P 500</h2>
+                </div>
+            }
             <div className='charts'>
-                {timeframes.map((item, i) => {
-                    return <Chart key={item.label} origin={origin} label={item.label} isDisplaying={item.attribute} currentYear={currentYear} currentMonth={currentMonth} currentDay={currentDay} />
+                {timeframes.map((item) => {
+                    return <Chart
+                        key={item.label}
+                        origin={origin} label={item.label} isDisplaying={item.attribute}
+                        currentYear={currentYear} currentMonth={currentMonth} currentDay={currentDay}
+                        isNQenabled={isNQenabled} isESenabled={isESenabled}
+                    />
                 })}
             </div>
         </div>

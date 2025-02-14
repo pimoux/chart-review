@@ -5,7 +5,7 @@ export const MIN_DATE = {
 }
 
 export const MAX_DATE = {
-    day: 10,
+    day: 14,
     month: "fevrier",
     year: 2025,
 }

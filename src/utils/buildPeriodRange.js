@@ -1,7 +1,7 @@
 export const buildPeriodRange = () => {
     const result = {};
     let startDate = new Date(2024, 8, 2);
-    const stopDate = new Date(2025, 1, 10);
+    const stopDate = new Date(2025, 1, 14);
     const validDays = ["Mon", "Tue", "Wed", "Thu", "Fri"];
     const associatedMonths = {
         "Jan": "janvier",
@@ -41,7 +41,10 @@ export const buildPeriodRange = () => {
         startDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + 1);
     }
 
+    //in trading markets are closed the 1st january and the 25th december
     result["2025"]["janvier"].shift();
+    const decembre2024 = result["2024"]["decembre"];
+    result["2024"]["decembre"] = [...decembre2024.filter(nb => nb !== 25)];
 
     return result;
 }

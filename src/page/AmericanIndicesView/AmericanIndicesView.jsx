@@ -47,6 +47,7 @@ export default function AmericanIndicesView() {
             <ChartDisplay
                 origin={"americanIndices"}
                 isM1enabled={isM1enabled} isM5enabled={isM5enabled} isM15enabled={isM15enabled} isH1enabled={isH1enabled}
+                isNQenabled={isNQenabled} isESenabled={isESenabled}
                 currentYear={currentYear} currentMonth={currentMonth} currentDay={currentDay}
             />
         </div>
