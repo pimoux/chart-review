@@ -20,10 +20,10 @@ export default function Chart({ label, isDisplaying, currentYear, currentMonth, 
     }
 
     const getStyleAmericanIndices = (isIndiceEnabled) => {
-        const isDisplaying = isIndiceEnabled === "NQ" ? isNQenabled : isESenabled;
+        const isDisplayingIndice = isIndiceEnabled === "NQ" ? isNQenabled : isESenabled;
         const completedLabel = isIndiceEnabled === "NQ" ? `NQ${label}` : `ES${label}`;
 
-        return isDisplaying ? {
+        return isDisplayingIndice && isDisplaying ? {
             backgroundImage: `url('/images/${origin}/${currentYear}/${currentMonth}/${currentDay}/${completedLabel}.png')`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
@@ -41,8 +41,9 @@ export default function Chart({ label, isDisplaying, currentYear, currentMonth, 
         <div className="chart-american-indices">
             <p className={getTextClassName()}>{label}</p>
             <div className="american-charts">
-                <div style={{ ...getStyleAmericanIndices("NQ") }}></div>
-                <div style={{ ...getStyleAmericanIndices("ES") }}></div>
+                {["NQ", "ES"].map(indice => {
+                    return <div key={indice} style={{ ...getStyleAmericanIndices(indice) }}></div>
+                })}
             </div>
         </div>
     )
